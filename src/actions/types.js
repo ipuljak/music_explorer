@@ -1,0 +1,2 @@
+export const CURRENT_ARTIST = "CURRENT_ARTIST";
+export const SIMILAR_ARTISTS = "SIMILAR_ARTISTS";
