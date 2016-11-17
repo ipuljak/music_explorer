@@ -1,25 +1,19 @@
-# ReduxSimpleStarter
+#Spotify Music Explorer
 
-Interested in learning [Redux](https://www.udemy.com/react-redux/)?
+This is a simple app that lets you explore new artists by finding those similar to what you like. It is written in ES6 and React/Redux.
 
-###Getting Started###
+###How To###
 
-There are two methods for getting started with this repo.
-
-####Familiar with Git?#####
-Checkout this repo, install dependencies, then start the gulp process with the following:
+To use this application, simply install the dependencies using
 
 ```
-	> git clone git@github.com:StephenGrider/ReduxSimpleStarter.git
-	> cd ReduxSimpleStarter
-	> npm install
-	> npm start
+    > npm install
 ```
 
-####Not Familiar with Git?#####
-Click [here](https://github.com/StephenGrider/ReactStarter/releases) then download the .zip file.  Extract the contents of the zip file, then open your terminal, change to the project directory, and:
+and then run the server with 
 
 ```
-	> npm install
-	> npm start
+    > npm start
 ```
+
+For more information about me, visit my website at [www.ivanpuljak.com](http://ivanpuljak.com)!
