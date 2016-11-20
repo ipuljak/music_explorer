@@ -28,9 +28,13 @@
   "dependencies": {
     "axios": "^0.15.2",
     "babel-preset-stage-1": "^6.1.18",
+    "d3": "^3.5.17",
+    "jquery": "^2.2.4",
     "lodash": "^3.10.1",
     "react": "^0.14.3",
+    "react-d3-library": "^1.1.7",
     "react-dom": "^0.14.3",
+    "react-pathjs-chart": "^0.3.5",
     "react-redux": "^4.0.0",
     "react-router": "^2.0.1",
     "redux": "^3.0.4",

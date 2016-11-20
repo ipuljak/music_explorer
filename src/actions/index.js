@@ -1,47 +1,90 @@
+import _ from 'lodash';
 import axios from 'axios';
 import {CURRENT_ARTIST,
         SIMILAR_ARTISTS
 } from './types';
+import createTree from '../data_visualization/tree';
 
-const API_TOKEN = 'BQBRM0RRGf74WNm8RhWz3j5e3ILYKykuO6GmHg36bh4P4-htRtO1lllDJemOoXupxxSaVqq7qU_HVDku5Rpsa_ug8zXI8Qd2SsCoqG1D9adGadX6XOrd0X61klenMM69k-n4UiQ5h5M';
-const CLIENT_ID = '5f6d5f84020447f0b4a241fdfbfcb50b';
-const CLIENT_SECRET = '0431da4c1fb9437f8dd39ea38e5e3a31';
+const URL = 'https://api.spotify.com/v1/';
+var visited = [];
 
+/** 
+    Return the information about a given searched artist.
+*/
 export function searchArtist(artist) {
-    const searchURL = `https://api.spotify.com/v1/search?q=${artist}&type=artist`;
+    const searchURL = `${URL}search?q=${artist}&type=artist`;
 
     return function(dispatch) {
-     //    axios.get(searchURL, {
-     //     headers: {Authorization: 'Bearer ' + CLIENT_ID + ':' + CLIENT_SECRET}
-     // })
      axios.get(searchURL)
         .then(response => {
-            //console.log(response.data.artists.items[0]);
-            dispatch({
-                type: CURRENT_ARTIST,
-                payload: response.data.artists.items[0]
-            });
-
-            const artistID = response.data.artists.items[0].id;
-            dispatch(similarArtists(artistID));
+            const currentArtist = response.data.artists.items[0];
+            visited.push(currentArtist.name);
+            dispatch(setCurrentArtist(currentArtist));
+            //dispatch(similarArtists(currentArtist.id));
+            const artistObject = {
+                aid: currentArtist.id,
+                id: 0,
+                name: currentArtist.name,
+                image: currentArtist.images[currentArtist.images.length - 2].url
+            };
+            createTree(artistObject);
         });
     }
 }
 
-export function similarArtists(id) {
-    const similarURL = `https://api.spotify.com/v1/artists/${id}/related-artists`;
+/** 
+    Set the current artist.
+*/
+export function setCurrentArtist(artist) {
+    return {
+        type: CURRENT_ARTIST,
+        payload: artist
+    };
+}
 
-    return function(dispatch) {
-     //    axios.get(similarURL, {
-     //     headers: {Authorization: 'Basic ' + CLIENT_ID + ':' + CLIENT_SECRET}
-     // })
-     axios.get(similarURL)
-        .then(response => {
-            console.log("SIMILAR ARTISTS:", response.data.artists);
-            dispatch({
-                type: SIMILAR_ARTISTS,
-                payload: response.data.artists
-            });
+/** 
+    Return a list of similar artists to the given artist. Returns 20 for now.
+*/
+// export function similarArtists(id) {
+//     const similarURL = `${URL}artists/${id}/related-artists`;
+
+//     return function(dispatch) {
+//      axios.get(similarURL)
+//         .then(response => {
+//             const sliced = response.data.artists.slice(0,5);
+//             return sliced;
+//             // dispatch({
+//             //     type: SIMILAR_ARTISTS,
+//             //     payload: sliced
+//             // });
+//             //return({artists: sliced});
+//         });
+//     }
+// }
+
+/** 
+    Return a list of similar artists to the given artist. Returns 20 for now.
+*/
+export function getSimilar(id) {
+    const similarURL = `${URL}artists/${id}/related-artists`;
+    return axios.get(similarURL)
+        .then(function(result) {
+
+            var allArtists = result.data.artists;
+            var uniques = [];
+            var counter = 0;
+
+            for (var x=0; x<allArtists.length; x++) {
+                if (_.indexOf(visited, allArtists[x].name) === -1) {
+                    counter++;
+                    visited.push(allArtists[x].name);
+                    uniques.push(allArtists[x]);
+
+                    if (counter === 5) {
+                        break;
+                    }
+                }
+            }
+            return uniques;
         });
-    }
 }

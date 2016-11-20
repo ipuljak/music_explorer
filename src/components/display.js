@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {searchArtist} from '../actions';
-import {bindActionCreators} from 'redux';
+import ArtistItem from './artist_item';
 
 class Display extends Component {
-    artistClick(artist) {
-        console.log(artist)
-    }
-
     renderArtist() {
         if (!this.props.artist) {
             return (
@@ -25,10 +20,10 @@ class Display extends Component {
             //onClick={this.props.searchArtist(item.name)}
             return this.props.similar.map((item) => {
                 return (
-                    <li key={item.id}
-                        onClick={() => this.props.searchArtist(item.name)}>
-                        {item.name}
-                    </li>
+                    <ArtistItem 
+                        key={item.name} 
+                        item={item}
+                    /> 
                 );
             });
         }
@@ -38,9 +33,10 @@ class Display extends Component {
         return (
             <div>
                 {this.renderArtist()}
-                <ul>
+                <hr/>
+                <div>
                     {this.renderSimilar()}
-                </ul>
+                </div>
             </div>
         );
     }
@@ -53,8 +49,4 @@ function mapStateToProps(state) {
     }
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({searchArtist}, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Display);
+export default connect(mapStateToProps, null)(Display);

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {searchArtist} from '../actions';
 import {bindActionCreators} from 'redux';
+import testing from '../data_visualization/tree';
 
 class Search extends Component {
     constructor(props) {
@@ -21,6 +22,8 @@ class Search extends Component {
 
         // Reset the search bar
         this.setState({term: ''});
+
+        //createTree("some kind of monster");
     }
 
     handleOnChange(event) {

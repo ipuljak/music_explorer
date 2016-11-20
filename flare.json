@@ -1,0 +1,30 @@
+{
+  "name": "Emperor",
+  "image": "https://i.scdn.co/image/81a3f9dbb797cecd4fb84a47411ab1fb17cc2d5d",
+  "children": [
+    {
+      "name": "Ihsahn",
+      "image": "https://i.scdn.co/image/04988796ab52178d9c87a97ee6bc8c5ad9018652",
+      "children": [
+        {"name": "Leprous", "image": "https://i.scdn.co/image/9f39fe3ae9163f00b3840165d3ce72546682b790",
+        "children": [
+        {"name": "Leprous2", "image": "https://i.scdn.co/image/9f39fe3ae9163f00b3840165d3ce72546682b790"},
+        {"name": "Wintersun", "image": "https://i.scdn.co/image/c5df832927f26455b0e7407610b397f4dc141d08", 
+        "children": [{"name": "Leprous", "image": "https://i.scdn.co/image/9f39fe3ae9163f00b3840165d3ce72546682b790"},
+        {"name": "Wintersun", "image": "https://i.scdn.co/image/c5df832927f26455b0e7407610b397f4dc141d08"}]}]},
+        {"name": "Wintersun", "image": "https://i.scdn.co/image/c5df832927f26455b0e7407610b397f4dc141d08"},
+        {"name": "Leprous3", "image": "https://i.scdn.co/image/9f39fe3ae9163f00b3840165d3ce72546682b790"},
+        {"name": "Wintersun", "image": "https://i.scdn.co/image/c5df832927f26455b0e7407610b397f4dc141d08"}
+      ]
+    },
+    {
+      "name": "d",
+      "image": "https://i.scdn.co/image/5d8df557ac021cd75ba57d329e0ae745593d8a72",
+      "children": [
+      {"name": "Leprous4", "image": "https://i.scdn.co/image/9f39fe3ae9163f00b3840165d3ce72546682b790"},
+        {"name": "Wintersun", "image": "https://i.scdn.co/image/c5df832927f26455b0e7407610b397f4dc141d08"}]
+    },
+    {"name": "Leprous5", "image": "https://i.scdn.co/image/9f39fe3ae9163f00b3840165d3ce72546682b790"},
+        {"name": "Wintersun", "image": "https://i.scdn.co/image/c5df832927f26455b0e7407610b397f4dc141d08"}
+  ]
+}
