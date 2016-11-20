@@ -6,7 +6,7 @@ class Display extends Component {
     renderArtist() {
         if (!this.props.artist) {
             return (
-                <div>Search for an artist to get started!</div>
+                <div></div>
             );
         } else {
             return (
@@ -33,10 +33,6 @@ class Display extends Component {
         return (
             <div>
                 {this.renderArtist()}
-                <hr/>
-                <div>
-                    {this.renderSimilar()}
-                </div>
             </div>
         );
     }

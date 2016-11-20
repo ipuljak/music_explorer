@@ -11,7 +11,11 @@ class Search extends Component {
         this.state = {term: ''};
         this.onSubmit = this.onSubmit.bind(this);
         this.handleOnChange = this.handleOnChange.bind(this);
-    }  
+    }
+
+    componentDidMount() {
+        React.findDOMNode(this.refs.searchInput).focus(); 
+    }
 
     onSubmit(event) {
         // Prevent the form from submitting
@@ -32,15 +36,16 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <form onSubmit={this.onSubmit}>
                     <input 
-                        className="form-control" 
+                        className="searchBar" 
                         type="text" 
-                        placeholder="Search for artist to get started..." 
+                        placeholder="Search for an artist to get started..." 
                         onChange={this.handleOnChange} 
-                        value={this.state.term} />
-                    <button className="btn btn-primary">Search</button>
+                        value={this.state.term} 
+                        ref="searchInput" />
+                    <button className="btn btn-default searchButton">Search</button>
                 </form>
             </div>
         );

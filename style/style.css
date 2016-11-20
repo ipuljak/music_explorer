@@ -1,3 +1,43 @@
+html {
+  background: rgba(27, 27, 30, 1);
+}
+
+.header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.wrapper {
+  text-align: center;
+}
+
+.searchBar {
+  background: rgba(27, 27, 30, 1);
+  width: 100%;
+  border: none;
+  font-size: 3em;
+  text-align: center;
+}
+
+.searchBar:focus {
+  outline: none;
+}
+
+.searchButton {
+  margin: 20px 0;
+}
+
+.react-container {
+  background: rgba(27, 27, 30, 1);
+  font-family: 'Oswald', sans-serif;
+  color: rgba(216, 219, 226, 1);
+}
+
+.title {
+  font-size: 4em;
+  font-family: 'Julius Sans One', sans-serif;
+}
+
 .tree {
   display: block;
   margin: 0 auto;
