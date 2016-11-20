@@ -13,8 +13,11 @@ function createTree(treeData) {
     var root;
 
     // size of the diagram
-    var viewerWidth = $(document).width() - 600;
-    var viewerHeight = $(document).height() - 300;
+    //var viewerWidth = $(document).width() - 600;
+    //var viewerHeight = $(document).height() - 300;
+
+    var viewerHeight = 600;
+    var viewerWidth = 1000;
 
     var tree = d3.layout.tree()
         .size([viewerHeight, viewerWidth]);
@@ -88,10 +91,10 @@ function createTree(treeData) {
 
     // Toggle children on click.
     function click(d) {
-        if (d3.event.defaultPrevented) return; // click suppressed
-        d = toggleChildren(d);
-        update(d);
-        centerNode(d);
+        // if (d3.event.defaultPrevented) return; // click suppressed
+        // d = toggleChildren(d);
+        // update(d);
+        // centerNode(d);
     }
 
     function addNew(d, ids) {
@@ -136,7 +139,7 @@ function createTree(treeData) {
         };
         childCount(0, root);
 
-        var newHeight = d3.max(levelWidth) * 125; // 25 pixels per line  
+        var newHeight = d3.max(levelWidth) * 100; // 25 pixels per line  
         tree = tree.size([newHeight, viewerWidth]);
 
         // Compute the new tree layout.
@@ -205,6 +208,7 @@ function createTree(treeData) {
             .attr("text-anchor", function(d) {
                 return d.children || d._children ? "end" : "start";
             })
+            .attr("font-size", "20px")
             .text(function(d) {
                 return d.name;
             })
@@ -218,9 +222,11 @@ function createTree(treeData) {
             .attr("text-anchor", function(d) {
                 return d.children || d._children ? "end" : "start";
             })
+            .attr("font-size", "50px")
             .text(function(d) {
                 return d.name;
-            });
+            })
+            .style("fill", "#fff");
 
         // Change the circle fill depending on whether it has children and is collapsed
         node.select("circle.nodeCircle")
@@ -238,7 +244,8 @@ function createTree(treeData) {
 
         // Fade the text in
         nodeUpdate.select("text")
-            .style("fill-opacity", 1);
+            .style("fill-opacity", 1)
+            .attr("font-size", "20px");
 
         // Transition exiting nodes to the parent's new position.
         var nodeExit = node.exit().transition()

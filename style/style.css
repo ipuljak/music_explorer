@@ -40,7 +40,9 @@ html {
 
 .tree {
   display: block;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+
 }
 
 .node {
@@ -48,7 +50,9 @@ cursor: pointer;
 }
 
 .overlay{
-  background-color:#EEE;
+  /**background-color:#EEE;*/
+  background: rgba(27, 27, 30, 1);
+
 }
 
 .node circle {
