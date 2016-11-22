@@ -1,13 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import Tracks from './tracks';
 
 class Display extends Component {
-    // Play the requested song
-    playTrack(song) {
-        var audio = new Audio(song);
-        audio.play()
-    }
-
     renderArtist() {
         if (this.props.artist) {
             return (
@@ -29,25 +24,11 @@ class Display extends Component {
         }
     }
 
-    renderTracks() {
-        if (this.props.tracks) {
-            return this.props.tracks.map((item) => {
-                return (
-                    <li key={item.id} onClick={() => this.playTrack(item.preview_url)}>
-                        {item.name}
-                    </li>
-                );
-            });
-        }
-    }
-
     render() {
         return (
             <div>
                 {this.renderArtist()}
-                <ol>
-                    {this.renderTracks()}
-                </ol>
+                <Tracks />
                 {this.renderInfo()}
             </div>
         );
@@ -58,8 +39,7 @@ function mapStateToProps(state) {
     return {
         artist: state.artist.data,
         similar: state.artist.similar,
-        info: state.artist.info,
-        tracks: state.artist.tracks
+        info: state.artist.info
     }
 }
 

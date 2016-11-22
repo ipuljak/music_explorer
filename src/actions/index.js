@@ -19,6 +19,9 @@ var visited = [];
 */
 export function searchArtist(artist) {
     const searchURL = `${URL}search?q=${artist}&type=artist`;
+    
+    // empty the visited array on any search
+    visited = [];
 
     return function(dispatch) {
      axios.get(searchURL)
