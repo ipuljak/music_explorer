@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM, {findDOMNode} from 'react-dom';
 import {connect} from 'react-redux';
 import {searchArtist} from '../actions';
 import {bindActionCreators} from 'redux';
@@ -14,7 +15,7 @@ class Search extends Component {
     }
 
     componentDidMount() {
-        React.findDOMNode(this.refs.searchInput).focus(); 
+        findDOMNode(this.refs.searchInput).focus(); 
     }
 
     onSubmit(event) {

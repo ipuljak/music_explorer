@@ -1,29 +1,41 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import ArtistItem from './artist_item';
 
 class Display extends Component {
+    // Play the requested song
+    playTrack(song) {
+        var audio = new Audio(song);
+        audio.play()
+    }
+
     renderArtist() {
-        if (!this.props.artist) {
-            return (
-                <div></div>
-            );
-        } else {
+        if (this.props.artist) {
             return (
                 <h2>{this.props.artist.name}</h2>
             );
         }
     }
 
-    renderSimilar() {
-        if(this.props.similar) {
-            //onClick={this.props.searchArtist(item.name)}
-            return this.props.similar.map((item) => {
+    renderInfo() {
+        if (this.props.info) {
+            const bio = this.props.info.bio.summary.replace(/ <a.*a>/g, "") + '..';
+            return (
+                <div className="">
+                    {bio}
+                    <p>Read more <a target="_blank" href={this.props.info.url+'/+wiki'}>here</a>.</p>
+                    <img src={this.props.info.image[2]['#text']} />
+                </div>
+            );
+        }
+    }
+
+    renderTracks() {
+        if (this.props.tracks) {
+            return this.props.tracks.map((item) => {
                 return (
-                    <ArtistItem 
-                        key={item.name} 
-                        item={item}
-                    /> 
+                    <li key={item.id} onClick={() => this.playTrack(item.preview_url)}>
+                        {item.name}
+                    </li>
                 );
             });
         }
@@ -33,6 +45,10 @@ class Display extends Component {
         return (
             <div>
                 {this.renderArtist()}
+                <ol>
+                    {this.renderTracks()}
+                </ol>
+                {this.renderInfo()}
             </div>
         );
     }
@@ -41,7 +57,9 @@ class Display extends Component {
 function mapStateToProps(state) {
     return {
         artist: state.artist.data,
-        similar: state.artist.similar
+        similar: state.artist.similar,
+        info: state.artist.info,
+        tracks: state.artist.tracks
     }
 }
 

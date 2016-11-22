@@ -2,12 +2,22 @@ html {
   background: rgba(27, 27, 30, 1);
 }
 
+li {
+  cursor: pointer;
+}
+
 .header {
+  height: 100px;
   text-align: center;
   margin: 20px 0;
   background: rgba(27, 27, 30, 1);
   color: rgba(216, 219, 226, 1);
   font-family: 'Oswald', sans-serif;
+}
+
+.title {
+  font-size: 50px;
+  font-family: 'Play', sans-serif;
 }
 
 .wrapper {
@@ -36,10 +46,7 @@ html {
   color: rgba(216, 219, 226, 1);
 }
 
-.title {
-  font-size: 4em;
-  font-family: 'Julius Sans One', sans-serif;
-}
+
 
 .tree {
   display: block;
@@ -87,4 +94,19 @@ stroke-width: 3px;
 
 .ghostCircle, .activeDrag .ghostCircle{
    display: none;
+}
+
+.svg-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%; /* aspect ratio */
+    vertical-align: top;
+    overflow: hidden;
+}
+.svg-content-responsive {
+    display: inline-block;
+    position: absolute;
+    top: 10px;
+    left: 0;
 }

@@ -1,5 +1,5 @@
 import d3 from 'd3';
-import {setCurrentArtist, getSimilar} from '../actions';
+import {setCurrentArtist, getArtistInfo, getSimilar, getTracks} from '../actions';
 
 function createTree(treeData) {
 
@@ -13,8 +13,8 @@ function createTree(treeData) {
     var root;
 
     // size of the diagram
-    var viewerWidth = $(document).width();
-    var viewerHeight = $(document).height()-400;
+    var viewerWidth = parseInt($(document).width() * 0.666);
+    var viewerHeight = $(document).height() - 150;
 
    // var viewerHeight = 600;
     //var viewerWidth = 1000;
@@ -89,16 +89,21 @@ function createTree(treeData) {
         return d;
     }
 
-    // Toggle children on click.
     function click(d) {
         // if (d3.event.defaultPrevented) return; // click suppressed
         // d = toggleChildren(d);
         // update(d);
         // centerNode(d);
+        // setCurrentArtist(d);
+        // getArtistInfo(d.name);
+        // getTracks(d.aid);
     }
 
     function addNew(d, ids) {
         if (!d.children && !d._children) {
+            setCurrentArtist(d);
+            getArtistInfo(d.name);
+            getTracks(d.aid);
             var newNodes = [];
             var promiseResult = getSimilar(d.aid);
 

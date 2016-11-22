@@ -1,11 +1,17 @@
 import _ from 'lodash';
 import axios from 'axios';
-import {CURRENT_ARTIST,
-        SIMILAR_ARTISTS
-} from './types';
 import createTree from '../data_visualization/tree';
+import {dispatch as storeDispatch} from '../index.js';
+import {lastFM_API_KEY} from '../../config';
+
+import {CURRENT_ARTIST,
+        SIMILAR_ARTISTS,
+        ARTIST_INFO,
+        TOP_TRACKS
+} from './types';
 
 const URL = 'https://api.spotify.com/v1/';
+
 var visited = [];
 
 /** 
@@ -18,15 +24,24 @@ export function searchArtist(artist) {
      axios.get(searchURL)
         .then(response => {
             const currentArtist = response.data.artists.items[0];
+
+            // Add the artist to the visited artists array
             visited.push(currentArtist.name);
-            dispatch(setCurrentArtist(currentArtist));
-            //dispatch(similarArtists(currentArtist.id));
+
+            // Set the current artist and info
+            setCurrentArtist(currentArtist);
+            getArtistInfo(currentArtist.name);
+            getTracks(currentArtist.id);
+            
+            // create a fresh artist object to be rendered into a D3 tree
             const artistObject = {
                 aid: currentArtist.id,
                 id: 0,
                 name: currentArtist.name,
                 image: currentArtist.images[currentArtist.images.length - 2].url
             };
+
+            // create the tree
             createTree(artistObject);
         });
     }
@@ -36,31 +51,25 @@ export function searchArtist(artist) {
     Set the current artist.
 */
 export function setCurrentArtist(artist) {
-    return {
+    storeDispatch({
         type: CURRENT_ARTIST,
         payload: artist
-    };
+    });
 }
 
-/** 
-    Return a list of similar artists to the given artist. Returns 20 for now.
-*/
-// export function similarArtists(id) {
-//     const similarURL = `${URL}artists/${id}/related-artists`;
+export function getArtistInfo(artist) {
+    const lastFM = 'http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=';
+    const lastFM_params = `&api_key=${lastFM_API_KEY}&format=json&autocorrect=1`
+    const lastFM_URL = `${lastFM}${artist}${lastFM_params}`;
 
-//     return function(dispatch) {
-//      axios.get(similarURL)
-//         .then(response => {
-//             const sliced = response.data.artists.slice(0,5);
-//             return sliced;
-//             // dispatch({
-//             //     type: SIMILAR_ARTISTS,
-//             //     payload: sliced
-//             // });
-//             //return({artists: sliced});
-//         });
-//     }
-// }
+    return axios.get(lastFM_URL)
+        .then(response => {
+            storeDispatch({
+                type: ARTIST_INFO,
+                payload: response.data.artist
+            });
+        });
+}
 
 /** 
     Return a list of similar artists to the given artist. Returns 20 for now.
@@ -87,4 +96,19 @@ export function getSimilar(id) {
             }
             return uniques;
         });
+}
+
+/**
+ *  Return a list of tracks given an artist ID.
+ */
+export function getTracks(id) {
+    const tracksURL = `${URL}artists/${id}/top-tracks?country=US`;
+
+    return axios.get(tracksURL)
+        .then(response => {
+            storeDispatch({
+                type: TOP_TRACKS,
+                payload: response.data.tracks
+            });
+        });    
 }
