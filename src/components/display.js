@@ -17,8 +17,9 @@ class Display extends Component {
             return (
                 <div className="infoText">
                     <p className="floatChild"><img className="infoPic" src={this.props.info.image[2]['#text']} /></p>
-                    <p>{bio}</p>
-                    <p>Read more <a target="_blank" href={this.props.info.url+'/+wiki'}>here</a>.</p>
+                    <p>
+                        {bio} Read more <a target="_blank" href={this.props.info.url+'/+wiki'}>here</a>.
+                    </p>
                 </div>
             );
         }
