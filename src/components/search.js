@@ -42,7 +42,7 @@ class Search extends Component {
                     <input 
                         className="searchBar" 
                         type="text" 
-                        placeholder="Search for an artist to get started..." 
+                        placeholder="Search for an artist..." 
                         onChange={this.handleOnChange} 
                         value={this.state.term} 
                         ref="searchInput" />

@@ -42,7 +42,7 @@ class Tracks extends Component {
 
     render() {
         return (
-            <ol>
+            <ol className="infoTracks">
                 {this.renderTracks()}
             </ol>
         );

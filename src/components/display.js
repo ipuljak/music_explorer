@@ -6,7 +6,7 @@ class Display extends Component {
     renderArtist() {
         if (this.props.artist) {
             return (
-                <h2>{this.props.artist.name}</h2>
+                <h1>{this.props.artist.name}</h1>
             );
         }
     }
@@ -15,10 +15,10 @@ class Display extends Component {
         if (this.props.info) {
             const bio = this.props.info.bio.summary.replace(/ <a.*a>/g, "") + '..';
             return (
-                <div className="">
-                    {bio}
+                <div className="infoText">
+                    <p className="floatChild"><img className="infoPic" src={this.props.info.image[2]['#text']} /></p>
+                    <p>{bio}</p>
                     <p>Read more <a target="_blank" href={this.props.info.url+'/+wiki'}>here</a>.</p>
-                    <img src={this.props.info.image[2]['#text']} />
                 </div>
             );
         }
@@ -26,7 +26,7 @@ class Display extends Component {
 
     render() {
         return (
-            <div>
+            <div className="info">
                 {this.renderArtist()}
                 <Tracks />
                 {this.renderInfo()}
