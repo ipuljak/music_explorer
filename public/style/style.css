@@ -50,7 +50,25 @@ html {
 .infoBio ul {
     display:inline-block;
 	text-align:left;
+    /*font-family: "Glyphicons Halflings";
+    content: "\e072";*/
 }
+
+li {
+    display: block;
+}
+
+li:before {
+    /*Using a Bootstrap glyphicon as the bullet point*/
+    content: "\e072";
+    font-family: 'Glyphicons Halflings';
+    font-size: 9px;
+    float: left;
+    margin-top: 4px;
+    margin-left: -17px;
+    color: #CCCCCC;
+}
+
 
 .infoTracks {
     /*text-align: center; 
