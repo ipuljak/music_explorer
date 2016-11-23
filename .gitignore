@@ -2,6 +2,7 @@
 bundle.js
 npm-debug.log
 .todo
+./config.js
 
 # IntelliJ
 *.iml

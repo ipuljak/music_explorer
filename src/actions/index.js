@@ -2,7 +2,7 @@ import _ from 'lodash';
 import axios from 'axios';
 import createTree from '../data_visualization/tree';
 import {dispatch as storeDispatch} from '../index.js';
-//import {lastFM_API_KEY} from '../../config.js';
+import {lastFM_API_KEY} from '../../config.js';
 
 import {CURRENT_ARTIST,
         SIMILAR_ARTISTS,
@@ -11,7 +11,7 @@ import {CURRENT_ARTIST,
 } from './types';
 
 const URL = 'https://api.spotify.com/v1/';
-const lastFM_API_KEY = 'aa8d48bf8e3685e544f8418283f7a048';
+
 
 var visited = [];
 
