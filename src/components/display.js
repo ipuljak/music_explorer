@@ -26,7 +26,7 @@ class Display extends Component {
 
     render() {
         return (
-            <div className="info">
+            <div className="infoBio">
                 {this.renderArtist()}
                 <Tracks />
                 {this.renderInfo()}

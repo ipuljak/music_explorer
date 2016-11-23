@@ -14,7 +14,7 @@ function createTree(treeData) {
 
     // size of the diagram
     var viewerWidth = parseInt($(document).width() * 0.666);
-    var viewerHeight = $(document).height() - 150;
+    var viewerHeight = $(document).height() - 5;
 
    // var viewerHeight = 600;
     //var viewerWidth = 1000;
