@@ -1,4 +1,4 @@
-export const CURRENT_ARTIST = "CURRENT_ARTIST";
-export const SIMILAR_ARTISTS = "SIMILAR_ARTISTS";
-export const ARTIST_INFO = "ARTIST_INFO";
-export const TOP_TRACKS = "TOP_TRACKS";
+export const CURRENT_ARTIST = 'CURRENT_ARTIST';
+export const SIMILAR_ARTISTS = 'SIMILAR_ARTISTS';
+export const ARTIST_INFO = 'ARTIST_INFO';
+export const TOP_TRACKS = 'TOP_TRACKS';

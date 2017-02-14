@@ -1,25 +1,25 @@
 import {
-    CURRENT_ARTIST,
-    SIMILAR_ARTISTS,
-    ARTIST_INFO,
-    TOP_TRACKS
+  CURRENT_ARTIST,
+  SIMILAR_ARTISTS,
+  ARTIST_INFO,
+  TOP_TRACKS
 } from '../actions/types';
 
-export default function(state = {}, action) {
-    switch(action.type)  {
-        case CURRENT_ARTIST:
-            console.log("CURRENT REDUCER", action.payload);
-            return {...state, data: action.payload};
-        case SIMILAR_ARTISTS:
-            console.log("SIMILAR REDUCER", action.payload);
-            return {...state, similar: action.payload};
-        case ARTIST_INFO:
-            console.log("INFO REDUCER", action.payload);
-            return {...state, info: action.payload};
-        case TOP_TRACKS:
-            console.log("TRACKS REDUCER", action.payload);
-            return {...state, tracks: action.payload};
-    }
-
-    return state;
-}
+export default (state = {}, action) => {
+  switch (action.type) {
+    // Set the current artist that the user requested
+    case CURRENT_ARTIST:
+      return {...state, data: action.payload };
+    // Set the similar artists to the current artist
+    case SIMILAR_ARTISTS:
+      return {...state, similar: action.payload };
+    // Set some info regarding the current artist
+    case ARTIST_INFO:
+      return {...state, info: action.payload };
+    // Set the top tracks of the current artist
+    case TOP_TRACKS:
+      return {...state, tracks: action.payload };
+    default:
+      return state;
+  }
+};
