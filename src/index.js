@@ -6,7 +6,7 @@ import { Provider } from 'react-redux';
 import reduxThunk from 'redux-thunk';
 
 // Main index components
-import App from './core/app';
+import App from './app';
 import reducers from './reducers';
 
 // Create the index store

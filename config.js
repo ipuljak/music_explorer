@@ -1,1 +1,0 @@
-export const lastFM_API_KEY = 'aa8d48bf8e3685e544f8418283f7a048';
