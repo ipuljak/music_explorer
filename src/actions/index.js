@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import axios from 'axios';
-import createTree from '../data_visualization/tree';
+import createTree from '../d3/tree';
 import { dispatch as storeDispatch } from '../index.js';
 import { lastfm_API_KEY } from '../secrets.js';
 
