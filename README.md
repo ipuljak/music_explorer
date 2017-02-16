@@ -32,7 +32,7 @@ To run the production server:
 and then serve the build files using the server of your choice.
 
 ### Demo
-This application can be demoed [here](https://puljak.ca/projects/artist_explorer).
+This application can be demoed [here](https://puljak.ca/artist_explorer).
 
 ### How To Use
 To use this application, enter an artist that you'd like to explore in the search bar. The application will load in the information about the artist including a photograph, a wiki-like blurb about them, as well as a list of some top tracks which can be clicked to play a 30 second preview. 
