@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import Header from '../../components/header';
-import Search from '../../components/search';
-import Display from '../../components/display';
+import Header from '../components/header';
+import Search from '../components/search';
+import Display from '../components/display';
 
 /**
  *  Main app component

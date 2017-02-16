@@ -27,7 +27,7 @@ class Display extends Component {
       return (
         <div className="infoText">
           <p className="floatChild">
-            <img className="infoPic" src={info.image[2]['#text']} />
+            <img className="infoPic" src={info.image[2]['#text']} role="presentation" />
           </p>
           <p>
             {bio}Read more <a target="_blank" href={info.url + '/+wiki'}>here</a>.
