@@ -51,12 +51,7 @@ A node image of the artist will also appear as the starting point of a D3 genera
 │   ├── app/
 │   │   ├── App component entry point
 │   ├── components/
-│   │   ├── authReducer.js
-|   |   |   ├── Redux reducer for authentication actions
-│   │   ├── index.js
-│   │   │   ├── Redux root reducer
-│   │   ├── streetViewReducer.js
-|   |   |   ├── Redux reducer for street view application actions
+│   │   ├── React components that make up the application
 │   ├── d3/
 │   │   ├── Code for generating an expandable node diagram
 │   ├── reducers/
